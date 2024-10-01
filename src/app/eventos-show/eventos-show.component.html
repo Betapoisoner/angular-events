@@ -1,0 +1,18 @@
+<div class="row" *ngIf="events && events.length > 0; else noEventos">
+    <div class="col-md-4 mt-4" *ngFor="let Evento of events">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ Evento.title }}</h4>
+                <p class="card-text">{{ Evento.description }}</p>
+            </div>
+            <div class="card-footer text-muted">
+                {{ Evento.date }}
+                <span class="float-right">{{ Evento.price }}€</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #noEventos>
+    <h4>No hay eventos disponibles</h4>
+</ng-template>
