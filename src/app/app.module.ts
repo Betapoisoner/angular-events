@@ -8,10 +8,12 @@ import { FormsModule } from '@angular/forms';
 
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import { EventoItemComponent } from './evento-item/evento-item.component';
+import { EventoAddComponent } from './evento-add/evento-add.component';
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
-  declarations: [AppComponent, EventosShowComponent, EventoFilterPipe],
+  declarations: [AppComponent, EventosShowComponent, EventoFilterPipe, EventoItemComponent, EventoAddComponent],
   imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
