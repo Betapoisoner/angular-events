@@ -26,7 +26,7 @@
   <div *ngIf="events && events.length > 0; else noEventos" class="row">
     <evento-item
       [event]="event"
-      (deleteEvent)="deleteEevento(event)"
+      (deleteEvent)="deleteEevento($event)"
       *ngFor="let event of events | eventoFilter : search"
       class="col-md-4 mt-4"
     >

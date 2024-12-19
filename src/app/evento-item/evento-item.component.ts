@@ -7,9 +7,9 @@ import { Evento } from '../interfaces/evento';
   styleUrls: ['./evento-item.component.css'],
 })
 export class EventoItemComponent {
-  @Output() deleteEvent = new EventEmitter<void>();
+  @Output() deleteEvent = new EventEmitter<number>();
   @Input() event!: Evento;
   deleteEvento() {
-    this.deleteEvent.emit();
+    this.deleteEvent.emit(this.event.id);
   }
 }

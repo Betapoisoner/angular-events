@@ -21,14 +21,34 @@ export class EventosShowComponent implements OnInit {
     this.search = null;
     this.events = this.events.sort((a, b) => a.price - b.price);
   }
-
-  deleteEevento(event: Evento) {
-    this.events = this.events.filter((e) => e.title != event.title);
+  orderId(id: number) {
+    this.events = this.events.filter((e) => e.id != id);
   }
+  deleteEevento(eventId: number) {
+    this.eventoService.deleteEvent(eventId).subscribe({
+      error: (error) => console.error(error),
+      complete: () => {
+        console.log('Evento - ' + eventId + ' - Borrado');
+        this.orderId(eventId);
+      },
+    });
+  }
+
   addEvento(event: Evento) {
-    this.events.push(event);
+    this.eventoService.addEvent(event).subscribe({
+      next: () => this.events.push(event), // Success function
+      error: (error) => console.error(error), // Error function (optional)
+      complete: () => console.log('Event added'),
+    });
+  }
+  getProducts() {
+    this.eventoService.getEventos().subscribe({
+      next: (event) => (this.events = event), // Success function
+      error: (error) => console.error(error), // Error function (optional)
+      complete: () => console.log('Events loaded'), // Finally function (optional)
+    });
   }
   ngOnInit() {
-    this.events = this.eventoService.getEventos();
+    this.getProducts();
   }
 }

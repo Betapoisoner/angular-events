@@ -10,11 +10,18 @@ import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { EventoItemComponent } from './evento-item/evento-item.component';
 import { EventoAddComponent } from './evento-add/evento-add.component';
+import { HttpClientModule } from '@angular/common/http';
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
-  declarations: [AppComponent, EventosShowComponent, EventoFilterPipe, EventoItemComponent, EventoAddComponent],
-  imports: [BrowserModule, FormsModule],
+  declarations: [
+    AppComponent,
+    EventosShowComponent,
+    EventoFilterPipe,
+    EventoItemComponent,
+    EventoAddComponent,
+  ],
+  imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
